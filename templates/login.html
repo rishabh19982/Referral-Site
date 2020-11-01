@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block  content %}
+
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+          <div class="row">
+             <div class="col-xl-12">
+                <div class="bradcam_text">
+                      <h3>Welcome to Referral Site</h3>
+                </div>
+             </div>
+          </div>
+    </div>
+ </div>
+ <div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h3 class="mb-30">Login </h3>
+
+                    {% for message in messages %}
+                        <h3 class="mb-30" style="color: crimson;">{{message}}</h3>
+                    {% endfor %}
+
+                    <form action="/validate/" method="POST">
+                        {% csrf_token %}
+                        <div class="mt-10">
+                            <input type="text" name="email" placeholder="Email address"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="password" name="password" placeholder="Password"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
+                                class="single-input">
+                        <div class="d-none d-xl-block mt-10">
+                            <input type="submit" name="Login" class="boxed-btn3" value="Login">
+                        </div>
+                        <div class="d-none d-xl-block mt-10">
+                            <a href="/signup">Make a new account here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

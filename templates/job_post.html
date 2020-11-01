@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block  content %}
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+          <div class="row">
+             <div class="col-xl-12">
+                <div class="bradcam_text">
+                      <h3>Add Job vacany </h3>
+                </div>
+             </div>
+          </div>
+    </div>
+ </div>
+ <div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h3 class="mb-30">Post the Job </h3>
+                    
+                    {% for message in messages %}
+                        <h3 class="mb-30" style="color: crimson;">{{message}}</h3>
+                    {% endfor %}
+
+                    <form action="/add-job/" method="POST">
+                        {% csrf_token %}
+                        <div class="mt-10">
+                            <input type="text" name="company" placeholder="Company Name"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Company Name'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="designation" placeholder="Designation"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Designation'" required
+                                class="single-input">
+                        </div>
+                        <div class="mt-10">
+                            <textarea  name="desc" placeholder="Description"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required
+                                class="single-input"></textarea>
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                            <input type="text" name="ctc" placeholder="CTC" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'CTC'" required class="single-input">
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                            <input type="text" name="city" placeholder="City" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'City'" required class="single-input">
+                        </div>
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                            <input type="text" name="country" placeholder="Country" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Country'" required class="single-input">
+                        </div>
+                        <div class=" mt-10 ">
+                           
+                                <input type="radio" id="Full Time" name="job_type" value="Full Time" required>
+                                <label for="Full Time">Full Time</label>
+                                <input type="radio" id="Part Time" name="job_type" value="Part Time">
+                                <label for="Part Time">Part Time</label>
+                            
+                        </div>
+                        <div class="d-none d-xl-block mt-10">
+                            <input type="submit" name="Post" class="boxed-btn3" value="Post">
+                            
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
